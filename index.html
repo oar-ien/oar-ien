@@ -1,0 +1,52 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{{ site.title }}</h1>
+    <p>{{ site.description }}</p>
+  </div>
+</section>
+
+<section class="recent-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+          {% for post in site.posts limit:3 %}
+          <li class="post-item">
+		  <div class="post-thumbnail" style="background-image: url('{{ post.header_image | relative_url }}')"></div>
+            <div class="post-info">
+              <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="post-categories">
+                {% for category in post.categories %}
+                <span class="category">{{ category }}</span>
+                {% endfor %}
+              </p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Recent Projects</h2>
+        <ul class="project-list">
+          {% for project in site.projects limit:3 %}
+          <li class="project-item">
+	    <div class="project-thumbnail" style="background-image: url('{{ project.header_image | relative_url }}')"></div>
+            <div class="project-info">
+              <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+              <p>{{ project.excerpt | truncate: 100 }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

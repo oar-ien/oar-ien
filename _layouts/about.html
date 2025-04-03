@@ -1,0 +1,208 @@
+---
+layout: default
+---
+
+<section class="about-section container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="section-title text-center">About Me</h1>
+
+      <div class="about-content card">
+        <div class="card-body">
+          <div class="about-image-container text-center mb-4">
+            <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Profile Picture" class="about-image">
+          </div>
+
+          <h2>Hello, I'm [Your Name]</h2>
+          <p class="lead">A passionate [Your Profession] focused on creating innovative solutions.</p>
+
+          <p>Welcome to my personal site where I share my thoughts, projects, and experiences. With over [X] years of experience in [Your Field], I've developed expertise in [Key Skills].</p>
+
+          <h3>My Journey</h3>
+          <p>My journey in [Your Field] began when [brief story about how you started]. Since then, I've worked on various projects and collaborated with talented professionals across different industries.</p>
+
+          <h3>What I Do</h3>
+          <div class="skills-container mb-5">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="skill-card">
+                  <i class="fas fa-code fa-2x mb-2" aria-hidden="true"></i>
+                  <h4>Development</h4>
+                  <p>Creating robust and scalable solutions using cutting-edge technologies.</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="skill-card">
+                  <i class="fas fa-paint-brush fa-2x mb-2" aria-hidden="true"></i>
+                  <h4>Design</h4>
+                  <p>Crafting intuitive and beautiful interfaces focused on user experience.</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="skill-card">
+                  <i class="fas fa-lightbulb fa-2x mb-2" aria-hidden="true"></i>
+                  <h4>Innovation</h4>
+                  <p>Constantly exploring new approaches and technologies to solve complex problems.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3>My Philosophy</h3>
+          <p>I believe in [your philosophy or approach to work]. My goal is to [your professional mission or what drives you].</p>
+
+          <h3>When I'm Not Working</h3>
+          <p>Outside of professional life, I enjoy [your hobbies or interests]. I also spend time [other personal activities].</p>
+        </div>
+      </div>
+
+      <div class="experience-education mt-5">
+        <h2 class="text-center mb-4">Experience & Education</h2>
+
+        <div class="timeline">
+          <!-- Experience Items -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="card-body">
+                <h4>Senior [Your Position]</h4>
+                <h5>Company Name | 20XX - Present</h5>
+                <p>Brief description of your role and key achievements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="card-body">
+                <h4>[Previous Position]</h4>
+                <h5>Previous Company | 20XX - 20XX</h5>
+                <p>Description of your responsibilities and notable projects.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Items -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="card-body">
+                <h4>Degree Name</h4>
+                <h5>University Name | 20XX - 20XX</h5>
+                <p>Brief description of your studies and achievements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-contact text-center mt-5">
+        <h3>Interested in working together?</h3>
+        <a href="{{ '/contact' | relative_url }}" class="btn-contact">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-image {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+  }
+
+  .about-content {
+    margin-bottom: 2rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--gray-700);
+  }
+
+  .skill-card {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--gray-100);
+    border-radius: 8px;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--primary-color);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -38px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--light-color);
+  }
+
+  .timeline-content {
+    margin-left: 15px;
+  }
+
+  .btn-contact {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-contact:hover {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+  }
+  /* Responsive fixes */
+  @media (max-width: 768px) {
+    .timeline-content {
+      margin-left: 5px;
+    }
+
+    .timeline {
+      padding-left: 20px;
+    }
+
+    .timeline-marker {
+      left: -28px;
+    }
+  }
+</style>

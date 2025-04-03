@@ -1,0 +1,28 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<div class="projects-page">
+  <div class="container">
+    <h1>Projects</h1>
+    <div class="projects-grid">
+      {% for project in site.projects %}
+      <div class="project-card">
+        <div class="project-image" style="background-image: url('{{ project.header_image | relative_url }}')"></div>
+        <div class="project-details">
+          <h2><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+          <div class="project-tech">
+            {% for tech in project.technologies %}
+            <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <p class="project-description">{{ project.excerpt | truncate: 150 }}</p>
+          <a href="{{ project.url | relative_url }}" class="view-project">View Project</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

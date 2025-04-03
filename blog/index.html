@@ -1,0 +1,74 @@
+---
+layout: default
+title: Blog
+---
+
+<div class="blog-page">
+  <div class="container">
+    <h1>Blog</h1>
+
+    <div class="category-filters">
+      <h2>Categories</h2>
+      <ul class="categories">
+        <li><a href="{{ '/blog/medicine' | relative_url }}" class="category medicine">Medicine</a></li>
+        <li><a href="{{ '/blog/technology' | relative_url }}" class="category technology">Technology</a></li>
+        <li><a href="{{ '/blog/security' | relative_url }}" class="category security">Security</a></li>
+        <li><a href="{{ '/blog/other' | relative_url }}" class="category other">Other</a></li>
+      </ul>
+    </div>
+
+    <div class="posts-list">
+      {% assign posts = paginator.posts %}
+      {% if posts.size > 0 %}
+        {% for post in posts %}
+        <article class="post-card">
+          <div class="post-thumbnail" style="background-image: url('{{ post.header_image | default: "/assets/images/default-post.jpg" | relative_url }}')"></div>
+          <div class="post-content">
+            <header>
+              <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+              <div class="post-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+                <span class="categories">
+                  {% for category in post.categories %}
+                  <a href="{{ '/blog/' | append: category | downcase | relative_url }}" class="category {{ category | downcase }}">{{ category }}</a>
+                  {% endfor %}
+                </span>
+                <span class="tags">
+                  {% for tag in post.tags %}
+                  <a href="{{ '/blog/tag/' | append: tag | downcase | relative_url }}" class="tag">{{ tag }}</a>
+                  {% endfor %}
+                </span>
+              </div>
+            </header>
+            <div class="excerpt">
+              {{ post.excerpt }}
+            </div>
+            <footer>
+              <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
+            </footer>
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        <p>No posts found.</p>
+      {% endif %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="previous">
+          Previous
+        </a>
+      {% endif %}
+      <span class="page_number">
+        Page: {{ paginator.page }} of {{ paginator.total_pages }}
+      </span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" class="next">
+          Next
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

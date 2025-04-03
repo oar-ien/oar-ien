@@ -1,0 +1,51 @@
+# Site settings
+title: Rachael Aitanun
+email: raitanun3@gmail.com
+description: CS Graduate, Cybersecurity Specialist
+baseurl: ""
+url: "https://oar-ien.github.io/"
+
+# Social media
+twitter_username: rachael
+github_username: oar-ien
+linkedin_username: rachael-aitanun
+
+# Collections
+collections:
+  projects:
+    output: true
+  journal:
+    output: true
+
+markdown: kramdown
+highlighter: rouge
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+      comments: false
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+
+# Blog settings
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+exclude:
+  - README.md

@@ -1,0 +1,206 @@
+---
+layout: default
+---
+
+<div class="project-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <article class="project-content">
+          <header class="project-header">
+            <h1 class="project-title">{{ page.title }}</h1>
+            
+            {% if page.tags %}
+            <div class="project-tags">
+              {% for tag in page.tags %}
+                <span class="tech-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+            
+            <div class="project-meta">
+              <span class="project-date"><i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+              {% if page.github_link %}
+                <a href="{{ page.github_link | relative_url }}" class="project-github" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+              {% endif %}
+              {% if page.demo_link %}
+                <a href="{{ page.demo_link | relative_url }}" class="project-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              {% endif %}
+            </div>
+            
+            {% if page.featured_image %}
+            <div class="project-featured-image">
+              <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+          </header>
+          
+          <div class="project-body">
+            {{ content }}
+          </div>
+          
+          <div class="project-footer">
+            <div class="tech-stack">
+              <h3>Technologies Used</h3>
+              <div class="tech-list">
+                {% for tech in page.technologies %}
+                  <span class="tech-tag">{{ tech }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            
+            {% if page.challenges %}
+            <div class="challenges-section">
+              <h3>Challenges & Solutions</h3>
+              <div class="challenges-content">
+                {{ page.challenges | markdownify }}
+              </div>
+            </div>
+            {% endif %}
+            
+            <div class="project-navigation">
+              <div class="nav-previous">
+                {% if page.previous %}
+                  <a href="{{ page.previous.url | relative_url }}" class="prev-project">
+                    <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Project</span>
+                    <span class="nav-title">{{ page.previous.title }}</span>
+                  </a>
+                {% endif %}
+              </div>
+              
+              <div class="nav-next">
+                {% if page.next %}
+                  <a href="{{ page.next.url | relative_url }}" class="next-project">
+                    <span class="nav-label">Next Project <i class="fas fa-arrow-right"></i></span>
+                    <span class="nav-title">{{ page.next.title }}</span>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .project-layout {
+    padding: 3rem 0;
+  }
+  
+  .project-header {
+    margin-bottom: 2rem;
+  }
+  
+  .project-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-tags {
+    margin-bottom: 1rem;
+  }
+  
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--gray-600);
+  }
+  
+  .project-meta a {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .project-meta a:hover {
+    color: var(--secondary-color);
+  }
+  
+  .project-featured-image {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-featured-image img {
+    width: 100%;
+    display: block;
+  }
+  
+  .project-body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  .project-body h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  
+  .project-body img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+  
+  .project-body pre {
+    margin: 1.5rem 0;
+  }
+  
+  .project-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-300);
+  }
+  
+  .tech-stack, .challenges-section {
+    margin-bottom: 2rem;
+  }
+  
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .project-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-200);
+  }
+  
+  .prev-project, .next-project {
+    display: flex;
+    flex-direction: column;
+    max-width: 45%;
+  }
+  
+  .nav-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    color: var(--gray-600);
+  }
+  
+  .nav-title {
+    font-weight: 500;
+  }
+  
+  .challenges-content {
+    background-color: var(--gray-100);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+  }
+</style>
