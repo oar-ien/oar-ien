@@ -1,8 +1,11 @@
 name: Deploy Jekyll site to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -22,28 +25,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
-        with:
-          ruby-version: '3.1'  # Ensure this matches your project
-          bundler-cache: true  # This will cache gems for faster installs
-          cache-version: 0
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
 
-      - name: Install dependencies
+      - name: Build Jekyll site using Docker
         run: |
-          gem install bundler
-          bundle install
+          docker build -t jekyll-site .
+          docker run --rm -v $(pwd):/srv/jekyll jekyll-site bundle exec jekyll build --destination /srv/jekyll/_site
 
-      - name: Build with Jekyll
-        run: |
-          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
-
-      - name: Upload artifact (Jekyll site)
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site  # Uploads the generated site from _site directory
+          path: ./_site
 
   # Deployment job
   deploy:
@@ -56,5 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: "github-pages"
